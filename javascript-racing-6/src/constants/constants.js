@@ -5,4 +5,10 @@ const REGEXS = deepFreeze({
   playTime: /^\d+$/,
 });
 
-export { REGEXS };
+const NUMBERS = deepFreeze({
+  minimum: 0,
+  maximum: 9,
+  go: 4,
+});
+
+export { REGEXS, NUMBERS };

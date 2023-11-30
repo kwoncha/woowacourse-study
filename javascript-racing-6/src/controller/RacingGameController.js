@@ -1,6 +1,7 @@
 import InputView from '../utils/Views/InputView.js';
 import MESSAGES from '../constants/messages.js';
 import Validate from '../utils/Validate/Validate.js';
+import Users from '../domain/Users.js';
 
 class RacingGameController {
   constructor() {
@@ -13,6 +14,7 @@ class RacingGameController {
     this.validate.checkNameDuplication(this.splitUserName(userName));
     const numberOfGame = await InputView(MESSAGES.inputPlayTime);
     this.validate.isValidPlayTime(numberOfGame);
+    this.users = new Users(this.splitUserName(userName), Number(numberOfGame));
   }
 
   splitUserName(name) {
