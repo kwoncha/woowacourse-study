@@ -1,7 +1,6 @@
 import Users from '../src/domain/Users.js';
 import randomNumber from '../src/domain/randomNumber.js';
 import OutputView from '../src/utils/Views/OutputView.js';
-import { NUMBERS } from '../src/constants/constants.js';
 import MESSAGES from '../src/constants/messages.js';
 
 jest.mock('../src/domain/randomNumber.js');
