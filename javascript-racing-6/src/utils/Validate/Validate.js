@@ -7,19 +7,14 @@ class Validate {
   }
 
   checkNameDuplication(name) {
-    const splitedUserName = this.splitUserName(name);
-    const userNumber = splitedUserName.length;
-    const setUser = new Set(splitedUserName);
+    const userNumber = name.length;
+    const setUser = new Set(name);
 
     if (userNumber !== setUser.size) throw new Error(MESSAGES.ERROR.duplicatedUserName);
   }
 
   isValidPlayTime(time) {
     if (!REGEXS.playTime.test(time)) throw new Error(MESSAGES.ERROR.notValidTime);
-  }
-
-  splitUserName(name) {
-    return name.split(',');
   }
 }
 

@@ -10,8 +10,13 @@ class RacingGameController {
   async gameStart() {
     const userName = await InputView(MESSAGES.inputUserName);
     this.validate.isValidUserName(userName);
+    this.validate.checkNameDuplication(this.splitUserName(userName));
     const numberOfGame = await InputView(MESSAGES.inputPlayTime);
     this.validate.isValidPlayTime(numberOfGame);
+  }
+
+  splitUserName(name) {
+    return name.split(',');
   }
 }
 
