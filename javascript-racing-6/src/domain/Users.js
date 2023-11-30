@@ -33,7 +33,7 @@ class Users {
   confirmationOfWinner() {
     const maxScore = this.findMaxScore();
     const winners = this.findWinners(maxScore);
-    OutputView.print(MESSAGES.winner(winners.join(',')));
+    OutputView.print(MESSAGES.winner(winners.join(', ')));
   }
 
   findMaxScore() {
