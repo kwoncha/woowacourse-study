@@ -12,14 +12,28 @@ class Users {
   racingStart() {
     for (let i = 0; i < this.time; i++) {
       this.users.map(value => {
-        const [user, count] = value;
+        let [user, score] = value;
         const createdRandomNumber = randomNumber();
-        if (createdRandomNumber >= NUMBERS.go) count++;
+        if (createdRandomNumber >= NUMBERS.go) score++;
 
-        OutputView.print(MESSAGES.currentResult(user, count));
-        return [user, count];
+        OutputView.print(MESSAGES.currentResult(user, score));
+        return [user, score];
       });
+
+      OutputView.print(MESSAGES.blink);
     }
+  }
+
+  confirmationOfWinner() {
+    const winner = [];
+    const maxScore = Math.max(...this.users.map(item => item[1]));
+
+    this.users.forEach(value => {
+      const [user, score] = value;
+      if (score === maxScore) winner.push(user);
+    });
+
+    OutputView.print(MESSAGES.winner(winner.join(',')));
   }
 }
 
