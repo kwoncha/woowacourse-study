@@ -1,13 +1,13 @@
-import { REGEXS } from "../constants/constants";
-import MESSAGE from "../constants/messages";
-import Validate from "../utils/Validate/Validate";
+import Validate from "../utils/Validate/Validate.js";
 
 class LottoWinnigNumber {
   #number;
 
-  constructor(winningNumbers) {
-    this.#validate(winningNumbers);
-    this.#number = winningNumbers.split(',').map(number => Number(number));
+  constructor(number) {
+    const numberArray = number.split(',');
+
+    this.#validate(numberArray);
+    this.#number = numberArray.map(number => Number(number));
   }
 
   #validate(numbers) {
