@@ -1,6 +1,7 @@
 import MESSAGE from '../constants/messages.js';
 import Lotto from '../domain/Lotto.js';
 import LottoWinnigNumber from '../domain/LottoWinnigNumber.js';
+import Validate from '../utils/Validate/Validate.js';
 import InputView from '../utils/Views/InputView.js';
 import OutputView from '../utils/Views/OutputView.js';
 
@@ -14,6 +15,9 @@ class LottoController {
     const winningNumbersString = await InputView.readLineAsync(MESSAGE.lottoNumbers);
     this.lottoWinningNumber = new LottoWinnigNumber(winningNumbersString);
     const winningNumbersArray = this.lottoWinningNumber.getWinningNumbers();
+    const bonusNumber = await InputView.readLineAsync(MESSAGE.bonusNumber);
+    const validate = new Validate();
+    validate.isValidBonusNumbers(Number(bonusNumber), winningNumbersArray);
   }
 }
 

@@ -12,7 +12,7 @@ class LottoWinnigNumber {
 
   #validate(numbers) {
     const validate = new Validate();
-    if (REGEXS.winningNumbers.test(numbers)) throw new Error(MESSAGE.ERROR.notValidWinningNumbers);
+    validate.isValidLottoNumbers(numbers);
   }
 
   getWinningNumbers() {
