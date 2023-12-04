@@ -1,4 +1,4 @@
-import deepFreeze from '../utils/deepFreeze/deepFreeze';
+import deepFreeze from '../utils/deepFreeze/deepFreeze.js';
 
 const REGEXS = Object.freeze({
   money: /^([1-9]\d*000)$/,

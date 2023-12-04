@@ -3,23 +3,27 @@ import Validate from '../utils/Validate/Validate.js';
 import randomLottoNumbers from './randomLottoNumbers.js';
 
 class Lotto {
-  #purchasedLotto = [];
+  #purchasedLottos = [];
 
   constructor(money) {
     this.validate = new Validate();
     this.validate.isValidMoney(money);
     this.numberOfLottoPurchases = Number(money) / NUMBERS.lottoPrice;
-    this.buyingLotto();
+    this.#buyingLotto();
   }
 
-  buyingLotto() {
+  #buyingLotto() {
     for (let i = 0; i < this.numberOfLottoPurchases; i++) {
-      this.#purchasedLotto.push(this.lottoNumberSorting(randomLottoNumbers()));
+      this.#purchasedLottos.push(this.#lottoNumberSorting(randomLottoNumbers()));
     }
   }
 
-  lottoNumberSorting(numbers) {
+  #lottoNumberSorting(numbers) {
     return numbers.sort((firstNumber, nextNumber) => firstNumber - nextNumber);
+  }
+
+  getPurchasedLottos() {
+    return this.#purchasedLottos;
   }
 }
 
