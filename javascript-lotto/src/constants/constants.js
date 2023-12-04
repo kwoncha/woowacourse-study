@@ -1,5 +1,14 @@
+import deepFreeze from '../utils/deepFreeze/deepFreeze';
+
 const REGEXS = Object.freeze({
   money: /^([1-9]\d*000)$/,
 });
 
-export default REGEXS;
+const NUMBERS = deepFreeze({
+  randomMin: 1,
+  randomMax: 45,
+  randomNumber: 6,
+  lottoPrice: 1000,
+});
+
+export { REGEXS, NUMBERS };

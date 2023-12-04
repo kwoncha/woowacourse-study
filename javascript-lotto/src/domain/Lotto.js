@@ -1,18 +1,26 @@
-class Lotto {
-  #numbers;
+import { NUMBERS } from '../constants/constants.js';
+import Validate from '../utils/Validate/Validate.js';
+import randomLottoNumbers from './randomLottoNumbers.js';
 
-  constructor(numbers) {
-    this.#validate(numbers);
-    this.#numbers = numbers;
+class Lotto {
+  #purchasedLotto = [];
+
+  constructor(money) {
+    this.validate = new Validate();
+    this.validate.isValidMoney(money);
+    this.numberOfLottoPurchases = Number(money) / NUMBERS.lottoPrice;
+    this.buyingLotto();
   }
 
-  #validate(numbers) {
-    if (numbers.length !== 6) {
-      throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
+  buyingLotto() {
+    for (let i = 0; i < this.numberOfLottoPurchases; i++) {
+      this.#purchasedLotto.push(this.lottoNumberSorting(randomLottoNumbers()));
     }
   }
 
-  // TODO: 추가 기능 구현
+  lottoNumberSorting(numbers) {
+    return numbers.sort((firstNumber, nextNumber) => firstNumber - nextNumber);
+  }
 }
 
 export default Lotto;
