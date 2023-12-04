@@ -19,11 +19,13 @@ class LottoController {
     this.lottoCalculator = new LottoCalculator(lottos, winningNumbersArray, bonusNumber);
     const profit = this.lottoCalculator.calculateProfit(money);
     const prizes = this.lottoCalculator.getPrizes();
+
     OutputView.printWinningStatistics(prizes, profit);
   }
 
   async getValidatedPurchaseInput() {
     const inputMoney = await InputView.readLineAsync(MESSAGE.inputMoney);
+
     try {
       const playingLotto = new Lotto(inputMoney);
       const lottos = playingLotto.getPurchasedLottos();

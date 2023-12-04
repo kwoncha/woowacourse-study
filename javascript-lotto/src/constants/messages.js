@@ -10,7 +10,13 @@ const MESSAGE = deepFreeze({
   bonusNumber: '\n보너스 번호를 입력해 주세요.\n',
   result: '\n당첨 통계',
   split: '---',
-  prizeText: (key, prizeAmount, prizeCount) => `${key}개 일치 (${prizeAmount}) - ${prizeCount}개`,
+  prizeText: (key, prizeAmount, prizeCount) => {
+    if (key === '5.1') {
+      return `5개 일치, 보너스 볼 일치 (${prizeAmount}) - ${prizeCount}개`;
+    }
+
+    return `${key}개 일치 (${prizeAmount}) - ${prizeCount}개`;
+  },
   profit: profit => `총 수익률은 ${profit}%입니다.`,
   ERROR: {
     notValidMoney: `${PREFIX} 1000원 단위로 입력해주세요.`,
