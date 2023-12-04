@@ -1,18 +1,23 @@
-class LottoWinnigNumber {
-  #numbers;
+import { REGEXS } from "../constants/constants";
+import MESSAGE from "../constants/messages";
+import Validate from "../utils/Validate/Validate";
 
-  constructor(numbers) {
-    this.#validate(numbers);
-    this.#numbers = numbers;
+class LottoWinnigNumber {
+  #number;
+
+  constructor(winningNumbers) {
+    this.#validate(winningNumbers);
+    this.#number = winningNumbers.split(',').map(number => Number(number));
   }
 
   #validate(numbers) {
-    if (numbers.length !== 6) {
-      throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
-    }
+    const validate = new Validate();
+    if (REGEXS.winningNumbers.test(numbers)) throw new Error(MESSAGE.ERROR.notValidWinningNumbers);
   }
 
-  // TODO: 추가 기능 구현
+  getWinningNumbers() {
+    return this.#number;
+  }
 }
 
 export default LottoWinnigNumber;
