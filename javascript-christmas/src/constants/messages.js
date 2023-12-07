@@ -2,7 +2,7 @@ import deepFreeze from '../utils/deepFreeze/deepFreeze.js';
 
 const PREFIX = '[ERROR]';
 
-const DISCOUNTDETAIL = Object.freeze({});
+// const DISCOUNTDETAIL = Object.freeze({});
 
 const MESSAGES = deepFreeze({
   start: '안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.\n',
