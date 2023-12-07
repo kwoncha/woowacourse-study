@@ -1,15 +1,20 @@
+import { NUMBERS } from '../constants/constants.js';
 import STARDAY from '../constants/startDay.js';
 import Validate from '../utils/Validate/Validate.js';
 
 class DateHandler {
   constructor(date) {
     this.date = date;
-    Validate.isWeekend(date);
+    Validate.isValidEventMonth(date);
   }
 
   isWeekend(date) {
     let weekend = false;
-    if ((date - 1) % 7 === 0 || (date - 2) % 7 === 0) weekend = true;
+    if (
+      (date - NUMBERS.friday) % NUMBERS.week === NUMBERS.zero ||
+      (date - NUMBERS.saturday) % NUMBERS.week === NUMBERS.zero
+    )
+      weekend = true;
 
     return weekend;
   }
