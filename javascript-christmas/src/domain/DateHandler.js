@@ -5,22 +5,23 @@ import Validate from '../utils/Validate/Validate.js';
 class DateHandler {
   constructor(date) {
     this.date = date;
-    Validate.isValidEventMonth(date);
+    Validate.isValidEventMonth(this.date);
   }
 
-  isWeekend(date) {
+  isWeekend() {
     let weekend = false;
     if (
-      (date - NUMBERS.friday) % NUMBERS.week === NUMBERS.zero ||
-      (date - NUMBERS.saturday) % NUMBERS.week === NUMBERS.zero
-    )
+      (this.date - NUMBERS.friday) % NUMBERS.week === NUMBERS.zero ||
+      (this.date - NUMBERS.saturday) % NUMBERS.week === NUMBERS.zero
+    ) {
       weekend = true;
+    }
 
     return weekend;
   }
 
-  isStarDay(date) {
-    return STARDAY.some(eventDay => date === eventDay);
+  isStarDay() {
+    return STARDAY.some(eventDay => this.date === eventDay);
   }
 }
 

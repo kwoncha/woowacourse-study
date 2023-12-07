@@ -1,17 +1,17 @@
-import { MENU, NUMBERS, REGEXS } from "../../constants/constants.js";
-import MESSAGES from "../../constants/messages.js";
+import { MENU, NUMBERS, REGEXS } from '../../constants/constants.js';
+import MESSAGES from '../../constants/messages.js';
 
-const Validate = () => {
+const Validate = {
   isValidEventMonth(date) {
-    if (!REGEXS.date.test(date)) throw new Error(MESSAGES.ERROR.notValidDate)
-  }
+    if (!REGEXS.date.test(date)) throw new Error(MESSAGES.ERROR.notValidDate);
+  },
 
   isValidMenu(menuArray) {
     let countedMenu = NUMBERS.zero;
     const setMenu = new Set();
     menuArray.forEach(menu => {
-      if (!REGEXS.menu.test(menu)) throw new Error(MESSAGES.ERROR.notValidMenu)
-    })
+      if (!REGEXS.menu.test(menu)) throw new Error(MESSAGES.ERROR.notValidMenu);
+    });
 
     menuArray.forEach(menuAndCount => {
       const [menu, count] = menuAndCount.split('-');
@@ -22,11 +22,12 @@ const Validate = () => {
 
       Object.keys(MENU).forEach(type => {
         if (!menu in MENU.type) throw new Error(MESSAGES.ERROR.notValidMenu);
-      })
-    })
+      });
+    });
 
-    if (countedMenu > NUMBERS.maxmumOrder || menuArray.length !== setMenu.size) throw new Error(MESSAGES.ERROR.notValidMenu);
-  }
+    if (countedMenu > NUMBERS.maxmumOrder || menuArray.length !== setMenu.size)
+      throw new Error(MESSAGES.ERROR.notValidMenu);
+  },
 };
 
 export default Validate;

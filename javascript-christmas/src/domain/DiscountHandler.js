@@ -7,7 +7,8 @@ class DiscountHandler {
     weekendDiscount: NUMBERS.zero,
     weekdayDiscount: NUMBERS.zero,
     starDayDiscount: NUMBERS.zero,
-    giftDiscount: NUMBERS.zero
+    giftDiscount: NUMBERS.zero,
+    orderedAmount: NUMBERS.zero,
   };
 
   constructor(date, weekend, starDay, orderedMenu) {
@@ -18,7 +19,7 @@ class DiscountHandler {
   }
 
   getprocessDiscounts() {
-    const orderedAmount = this.calculateOrderTotal()
+    this.calculateOrderTotal()
     this.applyChristmasDday();
     this.applyWeekdayAndWeekendDiscount();
     this.applyStarDayDiscount();
@@ -36,7 +37,7 @@ class DiscountHandler {
       });
     });
 
-    return amount;
+    this.#discountList.orderedAmount += amount;
   }
 
   applyChristmasDday() {
