@@ -5,6 +5,9 @@ const REGEXS = Object.freeze({
   menu: /^[가-힣]+-\d+$/,
 });
 
+const DESSERT = 'dessert';
+const MAIN = 'main';
+
 const NUMBERS = Object.freeze({
   minmumOrder: 1,
   maxmumOrder: 20,
@@ -12,6 +15,13 @@ const NUMBERS = Object.freeze({
   friday: 1,
   saturday: 2,
   week: 7,
+  maxday: 25,
+  thousand: 1000,
+  onedayDiscount: 100,
+  one: 1,
+  allDayDiscount: 2023,
+  minimumGift: 120000,
+  gift: 25000,
 });
 
 const MENU = deepFreeze({
@@ -37,4 +47,4 @@ const MENU = deepFreeze({
   },
 });
 
-export { REGEXS, MENU, NUMBERS };
+export { REGEXS, MENU, NUMBERS, DESSERT, MAIN };

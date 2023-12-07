@@ -2,7 +2,7 @@ import Validate from "../utils/Validate/Validate.js";
 import { MENU, NUMBERS } from "../constants/constants.js";
 
 class MenuHandler {
-  #orderedMenu
+  #orderedMenu = {}
 
   constructor(menu) {
     this.menu = menu.split(',');
